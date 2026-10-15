@@ -24,7 +24,7 @@
 
 directories=("logs" "configs" "scripts")
 
-file=("system.log" "app.conf" "backup.sh")
+files=("system.log" "app.conf" "backup.sh")
 
 content=(
 "192.168.1.50 - - [18/Mar/2024:10:15:32 +0000] \"GET /api/v1/products HTTP/1.1\" 200 1234 \"https://example.com/\"Mozilla/5.0 (Windows NT 10.0; Win64; x64)\""
@@ -50,6 +50,7 @@ for dir in "${directories[@]}"; do
         echo -e "${content[i]}" > "$dir/${files[i]}"
         chmod "${permissions[i]}" "$dir/${files[i]}"
     fi
+    ((i++))
 done
 
 echo -e "\n--------------------\nDirectory Structure\n--------------------\n"
